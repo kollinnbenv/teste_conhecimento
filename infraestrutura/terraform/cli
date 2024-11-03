@@ -1,0 +1,1 @@
+ docker cp ./pg_hba.conf f51d92c3f793:/var/lib/postgresql/data/pg_hba.conf

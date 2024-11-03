@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Desafio Técnico - Cubos DevOps",
+  "main": "index.js",
+  "type": "module",
+  "author": "Cubos DevOps",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.1"
+  }
+}

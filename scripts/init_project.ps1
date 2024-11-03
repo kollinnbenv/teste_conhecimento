@@ -1,5 +1,5 @@
 # Define a estrutura de diretórios
-$baseDir = "."
+$baseDir = "..\"
 
 $directories = @(
     "$baseDir\infraestrutura\terraform",
