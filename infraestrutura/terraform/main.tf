@@ -16,30 +16,7 @@ provider "docker" {
 
 resource "docker_network" "network" {
   name = "network"
-}
-
-
-resource "docker_container" "nginx_container" {
-  image = docker_image.nginx_image.image_id
-  name  = "my_nginx"
-
-  networks_advanced {
-    name = docker_network.network.name
-  }
-  
-  ports {
-    internal = 80   
-    external = 8080
-  }
-
-  restart = "always"  
-  start = "true"
-}
-
-
-resource "docker_image" "nginx_image" {
-  name         = "nginx:latest"
-  keep_locally = false
+  driver = "bridge"
 }
 
 resource "docker_volume" "postgres_data" {
@@ -54,6 +31,13 @@ resource "docker_image" "postgres_image" {
 resource "docker_container" "postgres_container" {
   image = docker_image.postgres_image.image_id
   name  = "postgres"
+
+  networks_advanced {
+    name = docker_network.network.name
+  }
+
+  
+
   mounts {
     target = "/var/lib/postgresql/data"
     source = docker_volume.postgres_data.name
@@ -72,4 +56,40 @@ resource "docker_container" "postgres_container" {
   ]
 
   restart = "always"
+}
+resource "docker_container" "frontend" {
+  image = "cubos/frontend"
+  name  = "frontend"
+  restart = "always"
+  ports {
+    internal = 80
+    external = 80
+  }
+
+  networks_advanced {
+    name = docker_network.network.name
+  }
+}
+
+resource "docker_container" "backend" {
+  image = "cubos/backend"
+  name  = "backend"
+  restart = "always"
+  ports {
+    internal = 3000
+    external = 3000
+  }
+
+  networks_advanced {
+    name = docker_network.network.name
+  }
+
+  env = [
+    "DB_PORT=5432",
+    "DB_USER=admin",
+    "DB_PASS=123",
+    "DB_HOST=postgres", 
+    "DB_NAME=teste",
+    "PORT=3000"
+  ]
 }

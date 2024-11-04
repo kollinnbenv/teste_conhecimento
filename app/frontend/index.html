@@ -63,28 +63,34 @@
     <p>Aborda conceitos de Terraform, Docker e Redes.</p>
     <button onclick="fetchAPI()">Verificar Backend e Banco</button>
     <script>
-      async function fetchAPI() {
-        const result = await fetch("/api", { mode: 'no-cors' })
-          .then(response => response.json())
+     async function fetchAPI() {
+  try {
+    const result = await fetch("http://localhost:3000/api")
+      .then(response => response.json());
 
-        if (result?.database) {
-          const h2 = document.createElement("h2");
-          h2.innerHTML = "Database is up";
-          document.body.appendChild(h2);
-        }
+    if (result?.database) {
+      const h2 = document.createElement("h2");
+      h2.innerHTML = "Database is up";
+      document.body.appendChild(h2);
+    }
 
-        if (result?.userAdmin) {
-          const h2 = document.createElement("h2");
-          h2.innerHTML = "Migration runned";
-          document.body.appendChild(h2);
-        }
+    if (result?.userAdmin) {
+      const h2 = document.createElement("h2");
+      h2.innerHTML = "Migration runned";
+      document.body.appendChild(h2);
+    }
 
-        if (result?.database && result?.userAdmin) {
-          const button = document.querySelector("button");
-          button.disabled = true;
-          button.classList.add("disabled");
-        }
-      }
+    if (result?.database && result?.userAdmin) {
+      const button = document.querySelector("button");
+      button.disabled = true;
+      button.classList.add("disabled");
+    }
+  } catch (error) {
+    console.error("Erro ao conectar com a API:", error);
+    alert("Erro ao conectar com a API. Verifique se a API está em execução.");
+  }
+}
+
     </script>
   </body>
 </html>

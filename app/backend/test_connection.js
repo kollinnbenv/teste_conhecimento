@@ -8,7 +8,7 @@ const pool = new Pool({
   user: 'admin',
   host: 'localhost',
   database: 'teste',
-  password: 'admin',
+  password: '123',
   port: 5432,
 });
 
@@ -23,6 +23,6 @@ pool.connect((err, client, release) => {
       console.error('Erro ao executar consulta', err.stack);
       return;
     }
-    console.log(result.rows);
+    console.log("Estou conectado");
   });
 });
