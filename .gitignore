@@ -3,3 +3,4 @@ infraestrutura/terraform/.terraform.lock.hcl
 infraestrutura/terraform/terraform.tfstate
 infraestrutura/terraform/terraform.tfstate.backup
 app/backend/node_modules
+app/frontend/node_modules

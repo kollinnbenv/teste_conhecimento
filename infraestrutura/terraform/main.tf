@@ -46,7 +46,6 @@ resource "docker_container" "postgres_container" {
 
   ports {
     internal = 5432   
-    external = 5432   
   }
 
   env = [
@@ -77,7 +76,6 @@ resource "docker_container" "backend" {
   restart = "always"
   ports {
     internal = 3000
-    external = 3000
   }
 
   networks_advanced {
