@@ -20,13 +20,20 @@ db="sua_base_de_dados"
 
 ## Estrutura de Pastas
 
-teste_conhecimento
+teste_conhecimento 
+
 ├── app
+
 │   ├── backend
+
 │   │   └── sql
+
 │   ├── frontend
+
 ├── infraestrutura
+
 │   └── terraform
+
 ├── scripts
 
 - Backend: Contém a estrutura da API, incluindo dependências, Dockerfile e server.js. Explicação: O backend se comunica com o banco de dados Postgres 15.8 e executa um SQL localizado em backend/sql.
