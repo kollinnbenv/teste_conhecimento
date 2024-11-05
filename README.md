@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Desafio Técnico de DevOps
 ## 📝  Descrição do Projeto
 Este projeto é um teste de conhecimento, com toda a aplicação rodando localmente. O objetivo é orquestrar containers com Terraform usando Docker, configurando uma API que executa um script SQL em um banco de dados Postgres 15.8 e um frontend que se comunica com o backend através de um proxy reverso configurado no Nginx.
@@ -56,6 +55,3 @@ A orquestração de containers com Docker é prática e rápida, mas traz limita
 
 ## Autor: Kollinn Costa Benvenutti
 ### Data: 04/11/2024
-=======
-# teste_conhecimento
->>>>>>> 934c06a (Initial commit)
