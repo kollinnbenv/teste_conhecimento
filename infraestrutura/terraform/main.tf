@@ -47,12 +47,12 @@ resource "docker_container" "postgres_container" {
   ports {
     internal = 5432   
   }
+env = [
+  "POSTGRES_USER=${var.user_db}",
+  "POSTGRES_PASSWORD=${var.passowrd_db}",
+  "POSTGRES_DB=${var.db}"
+]
 
-  env = [
-    "POSTGRES_USER=admin",       
-    "POSTGRES_PASSWORD=123", 
-    "POSTGRES_DB=teste"      
-  ]
 
   restart = "always"
 }
@@ -82,12 +82,14 @@ resource "docker_container" "backend" {
     name = docker_network.network.name
   }
 
-  env = [
-    "DB_PORT=5432",
-    "DB_USER=admin",
-    "DB_PASS=123",
-    "DB_HOST=postgres", 
-    "DB_NAME=teste",
-    "PORT=3000"
-  ]
+   env = [
+  "DB_PORT=5432",
+  "DB_USER=${var.user_db}",
+  "DB_PASS=${var.passowrd_db}",
+  "DB_HOST=postgres",
+  "DB_NAME=${var.db}",
+  "PORT=3000"
+]
+
+
 }
