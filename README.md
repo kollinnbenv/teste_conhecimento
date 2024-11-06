@@ -15,7 +15,9 @@ Este projeto é um teste de conhecimento, com toda a aplicação rodando localme
 Edite o arquivo values.tfvars com os valores das variáveis que desejar:
 
 password_db="sua_senha"
+
 user_db="seu_usuario"
+
 db="sua_base_de_dados"
 
 ## Estrutura de Pastas
@@ -34,7 +36,6 @@ teste_conhecimento
 
 │   └── terraform
 
-├── scripts
 
 - Backend: Contém a estrutura da API, incluindo dependências, Dockerfile e server.js. Explicação: O backend se comunica com o banco de dados Postgres 15.8 e executa um SQL localizado em backend/sql.
 SQL: Diretório onde o arquivo script.sql está localizado para ser executado na API.
